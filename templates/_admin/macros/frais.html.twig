@@ -1,0 +1,30 @@
+{% macro frais(frais) %}
+    {#{{ dump(frais) }}#}
+    <div class="row ligne">
+         <div class="col-md-4 ">
+            {{ form_row(frais.date,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Date Envoi'}}) }}
+        </div>
+        <div class="col-md-3 ">
+            {{ form_row(frais.montant,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Montant'}}) }}
+        </div>
+        <div class="col-md-3 ">
+            {{ form_row(frais.path,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Document'}}) }}
+        </div>
+        {% if frais.children.path.vars.data %}
+            <div class="col-md-1 ">
+                <a class="btn btn-dark" target="_blank" href="{{ asset('uploads/images/' ~ frais.children.path.vars.data) }}" download> <i class="fe fe-upload"></i>
+                    <i class="fe fe-folder"></i></a>
+                {#<button type="button" class="btn btn-dark">Upload</button>#}
+            </div>
+        {% endif %}
+        {#  <div class="col-md-3 ">
+              {{ form_row(frais.typeActe,{'attr':{'class':'form-control motif','id':'userinput16','placeholder':'Type acte'}}) }}
+          </div>#}
+
+        <div class="col-md-1  supprimer">
+
+        </div>
+
+    </div>
+
+{% endmacro frais %}

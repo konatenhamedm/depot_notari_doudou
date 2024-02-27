@@ -1,0 +1,37 @@
+{# {% macro image(document) %}
+
+    <div class="row">
+        <div class="col-md-6 ">
+            {{ form_row(document.titre,{'attr':{'class':'form-control motif','id':'userinput16','placeholder':'Titre'}}) }}
+        </div>
+        <div class="col-md-5 ">
+             {{ form_row(document.fichier,{'attr':{'class':'form-control motif','id':'userinput16','placeholder':'documents en pdf'}}) }}
+        </div>
+
+        <div class="col-md-1  supprimer">
+
+        </div>
+
+    </div>
+
+{% endmacro image %} #}
+
+
+{% macro image(document) %}
+    <div class="row row-container">
+      {#   <div style="display:none">{{ form_row(document.document) }}</div> #}
+        <div class="col-md-5">{{ form_row(document.titre) }}</div>
+        <div class="col-md-5">{{ form_row(document.fichier) }}</div>
+       
+        <div class="col-md-1 ">
+             {% if document.vars.value %}
+            <a class="btn btn-dark" target="_blank" href="{{ path('fichier_index', {id:  document.vars.value.fichier.id}) }}" download> <i class="fe fe-upload"></i>
+                <i class="fe fe-folder"></i></a>
+                {% endif %}
+        </div>
+        
+        <div class="col-md-1 del-col">
+
+        </div>
+    </div>
+{% endmacro %}
